@@ -6,7 +6,7 @@ def letterCasePermutation(S):
 	if S.isdigit():
 		return S
 	else:
-		return 0
+		S = S.lower()
 
 
 print letterCasePermutation("12345")
