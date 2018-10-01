@@ -31,10 +31,10 @@ class Solution(object):
 		if not root:
 			return 0
 
-		left = self.maxDepth(root.left)
-		right = self.maxDepth(root.right)
+		left = self.maxDepth(root.left, self.ans)
+		right = self.maxDepth(root.right, self.ans)
 
-		ans = max(ans, left+right)
+		self.ans = max(self.ans, left+right)
 
 		return max(left, right) + 1
 
@@ -43,6 +43,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        ans = 0
-
-        return self.maxDepth( root, ans )
+        self.ans = 0
+        self.maxDepth( root, self.ans )
+        return self.ans
