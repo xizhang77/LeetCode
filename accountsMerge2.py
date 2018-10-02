@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-不LTE的修改方式：在Union function中，广度优先而不是深度优先，因为反复的查找parent非常费时
+不LTE的修改方式：在Union function中，将weight小的树和weight大的树合并，这样就可以尽量保持树的平衡，降低层数
 '''
 class Solution(object):
 	def __init__(self):
