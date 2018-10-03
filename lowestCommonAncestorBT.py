@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 '''
-LTE... Try another way...
-'''
-
-'''
 Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
 According to the definition of LCA on Wikipedia: 
@@ -43,7 +39,11 @@ p and q are different and both values will exist in the binary tree.
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+
+'''
+LTE...
+'''
+class LTE_Solution(object):
     def preOrder(self, root, p, q, path, ans):
         if not root or len(ans) == 2:
             return 
@@ -67,3 +67,37 @@ class Solution(object):
             ans = ans[::-1]
         # Idx = [ idx for idx in range(len(ans[0])) if ans[0][idx] == ans[1][idx] ]
         return ans[0][Idx[-1]]
+
+
+
+'''
+AC found from discussion. Pretty tricky i think...
+'''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class AC_Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        if root == p or root == q:
+            return root
+        
+        left, right = None, None
+        if root.left:
+            left = self.lowestCommonAncestor( root.left, p, q)
+        if root.right:
+            right = self.lowestCommonAncestor( root.right, p, q )
+        
+        if left and right:
+            return root
+        else:
+            return left or right

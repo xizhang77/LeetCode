@@ -52,6 +52,22 @@ class Solution(object):
 
 		return dp[numCoin][amount] if dp[numCoin][amount] != float('inf') else -1
 
-
 obj = Solution()
 print obj.coinChange( [1,2,5], 11 )
+
+'''
+A more simplified and faster version.
+'''
+class BetterSolution(object):
+	def coinChange(self, coins, amount):
+
+		MAX = float('inf')
+		dp = [0] + [MAX] * amount
+		for i in range(1, amount + 1):
+			dp[i] = min([dp[i - c] if i - c >= 0 else MAX for c in coins]) + 1
+
+		print dp[amount] if dp[amount] != MAX else -1
+
+obj2 = BetterSolution()
+print obj2.coinChange( [1,2,5], 11 )
+

@@ -1,8 +1,4 @@
 '''
-LTE again... Try DP instead of DFS (too many return in DFS, which boost the time complexity)
-'''
-
-'''
 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
 determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
@@ -27,6 +23,10 @@ Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
 '''
 
+
+'''
+LTE again... Try DP instead of DFS (too many return in DFS, which boost the time complexity)
+'''
 class Solution(object):
 	def dfs(self, s, Dict, path):
 		if not s:
@@ -53,5 +53,33 @@ class Solution(object):
 			return False
 		return self.dfs( s, wordDict, [])
 
-obj = Solution()
-print obj.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])
+# obj = Solution()
+# print obj.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])
+
+
+"""
+AC solution using DP.
+"""
+class AC_Solution(object):
+
+	def wordBreak(self, s, wordDict):
+		"""
+		:type s: str
+		:type wordDict: List[str]
+		:rtype: List[str]
+		"""
+		n = len(s)
+		dp = [True] + [False]*n
+
+		for i in range(n):
+			for j in range(i+1):
+				print i, j, dp
+				if dp[j] and s[j: i+1] in wordDict:
+					dp[i + 1] = True  #which means 
+
+		return dp[n]
+
+obj = AC_Solution()
+# print obj.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])
+
+print obj.wordBreak("leetcode", ["leet", "code"])

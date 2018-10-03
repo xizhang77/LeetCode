@@ -33,3 +33,24 @@ class Solution(object):
 obj = Solution()
 # print obj.firstUniqChar("loveleetcode")
 print obj.firstUniqChar("ccc")
+
+'''
+Another solution...
+'''
+from collections import Counter
+
+class BetterSolution(object):
+	def firstUniqChar(self, s):
+		"""
+		:type s: str
+		:rtype: int
+		"""
+		cnt = Counter(s)
+		print cnt.keys()
+		print cnt.values()
+		uniqchar = [ char for char in cnt.keys() if cnt[char] == 1]
+
+		return min([ s.index(char) for char in uniqchar]) if uniqchar else -1
+
+obj = BetterSolution()
+print obj.firstUniqChar("loveleetcode")

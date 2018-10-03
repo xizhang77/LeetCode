@@ -45,3 +45,19 @@ class Solution(object):
 				break
 
 		return 1
+
+	def firstBadVersion_simplify(self, n):
+		"""
+		:type n: int
+		:rtype: int
+		"""
+		start, end = 0, n
+
+		while start < end:
+			if isBadVersion( (start + end)/2 ):
+				end = (start + end)/2
+			else:
+				start = (start + end)/2
+
+			if end - start == 1:
+				return end
