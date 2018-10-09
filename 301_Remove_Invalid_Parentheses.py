@@ -20,7 +20,6 @@ Output: [""]
 
 '''
 
-import re
 class Solution(object):
 	def remove(self, ans, s, last_i, last_j, char):
 		'''
@@ -38,7 +37,7 @@ class Solution(object):
 				continue
 
 			for j in range(last_j, i + 1):
-				if s[j] == char[1] ( j == last_j or s[j-1] != char[1] ):
+				if s[j] == char[1] and ( j == last_j or s[j-1] != char[1] ):
 					self.remove( ans, s[:j] + s[j+1:], i, j, char )
 			return
 
