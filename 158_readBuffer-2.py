@@ -24,7 +24,8 @@ read("abc", 1); // returns ""
 '''
 
 '''
-解题思路：这道题和上一道题唯一不同的地方是，这一次read函数可以被调用多次。因此需要有一个全局变量来记录目前为止已经读了多少（而不是像上一道题，每次都从头开始）
+解题思路：这道题和上一道题唯一不同的地方是，这一次read函数可以被调用多次。因此需要有一个全局变量来记录目前为止已经读了多少
+（而不是像上一道题，每次都从头开始）
 '''
 
 # The read4 API is already defined for you.
@@ -46,14 +47,14 @@ class Solution(object):
 		:type n: Maximum number of characters to read (int)
 		:rtype: The number of characters read (int)
 		"""
-		if not buff or n<=0:
+		if not buf or n<=0:
 			return 0
 
 		idx = 0
 		while 1:
 			buff = ['']*4
 			num = read4(buff)
-			self.queue.extend(buff)
+			self.queue += buff
 			temp = min( len(self.queue), n - idx)
 
 			for i in range(temp):

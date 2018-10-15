@@ -107,11 +107,7 @@ class Solution(object):
         			next_level.append([node[0].right, node[1] + 1])
         	next_level = curr_level
 
-        MIN = min(table.keys())
-        MAX = max(table.keys())
-
-        for val in xrange(MIN, MAX+1):
-        	if val in table:
+        for val in sorted(table):
         		ans.append( table[val] )
         
         return ans

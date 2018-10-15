@@ -1,4 +1,24 @@
-def constructArray(n, k):
+
+# 52ms, beat 99%
+def constructArray(self, n, k):
+    """
+    :type n: int
+    :type k: int
+    :rtype: List[int]
+    """
+    ans = []
+    left, right = 1, k + 1
+    while left < right:
+        ans += [left, right]
+        left += 1
+        right -= 1
+    if k%2==0:
+        ans += [left]
+
+    return ans + range(k+2, n+1)
+
+# 118ms
+def constructArray_slow(n, k):
     """
     :type n: int
     :type k: int

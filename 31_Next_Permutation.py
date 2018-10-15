@@ -36,7 +36,8 @@ class Solution(object):
 						break
 				break
 			if i == 1:
-				nums = sorted(nums)
+				# nums = sorted(nums)
+				nums.sort(reverse=False)
 
 		return nums
 

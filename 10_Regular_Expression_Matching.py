@@ -32,6 +32,7 @@ class Solution(object):
 				return False
 				
 		# The following if is used for purning. The program is still working without it.
+		# But the running time can be improved from 1000ms to 110ms with pruning
 		if p[-1] != '*' and p[-1] != '.' and p[-1] not in s:
 			return False
 		
@@ -42,7 +43,7 @@ class Solution(object):
 				return False
 		else:
 			while ( s != '' and (s[0] == p[0] or p[0] == '.' )):
-				if self.isMatch( s, p[2:] ):
+				if self.isMatch( s, p[2:] ):  #For case "aaa", "a*a"
 					return True
 				s = s[1:]
 			return self.isMatch( s, p[2:] )
