@@ -24,9 +24,9 @@ class BSTIterator(object):
 
     def inorder(self, root):
         if root:
-            stack = self.inorder(root.left)
-            stack.append( root )
-            stack = stack + self.inorder(root.right)
+            self.inorder(root.left)
+            self.stack.append( root.val )
+            self.inorder(root.right)
         else:
             return
 
@@ -34,13 +34,13 @@ class BSTIterator(object):
         """
         :rtype: bool
         """
-        return self.stack > 0
+        return len(self.stack) > 0
 
     def next(self):
         """
         :rtype: int
         """
-        return self.stack.pop()
+        return self.stack.pop(0)
 
 # Your BSTIterator will be called like this:
 # i, v = BSTIterator(root), []
