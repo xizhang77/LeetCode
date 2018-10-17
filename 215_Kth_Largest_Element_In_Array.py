@@ -16,6 +16,12 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 '''
 
 class Solution(object):
+
+	def findKthLargest2(self, nums, k):
+		nums.sort(reverse=Ture)
+
+		return nums[k-1]
+		
 	def findKthLargest(self, nums, k):
 		"""
 		:type nums: List[int]

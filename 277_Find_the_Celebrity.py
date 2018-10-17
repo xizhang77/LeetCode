@@ -32,12 +32,13 @@ class Solution(object):
 		:rtype: int
 		"""
 
-		k = 0
+		candidate = 0
 		for i in range(1, n):
-			k = k if knows(i, k) else i
+			if knows(candidate, i):
+				candidate = i
 
 		for i in range(n):
-			if i != k and (not knows(i, k) or knows(k, i)):
+			if i != candidate and (not knows(i, candidate) or knows(candidate, i)):
 				return -1
 
-		return k
+		return candidate

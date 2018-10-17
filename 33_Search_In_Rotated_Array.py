@@ -22,8 +22,22 @@ Output: -1
 '''
 
 class Solution(object):
+	def binarySearch2(self, nums, target):
+		if nums[0] > target or nums[-1] < target:
+			return -1
+		start, end = 0, len(nums) - 1
+		while (end - start) > 1:
+			if nums[ (start + end)/2 ] < target:
+				start = (start + end)/2
+			else:
+				end = (start + end)/2
+
+		if target not in [nums[start], nums[end]]:
+			return -1
+		else:
+			return start if target == nums[start] else end
+
 	def binarySearch(self, nums, target):
-		print nums
 		if nums[0] > target or nums[-1] < target or not nums:
 			return -1
 

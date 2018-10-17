@@ -32,7 +32,7 @@ class Solution(object):
 				j -= 1
 			else:
 				if sortnums[i] == sortnums[j]:
-					return [idx for idx in xrange(len(nums))f if nums[idx] == sortnums[i]]
+					return [idx for idx in xrange(len(nums)) if nums[idx] == sortnums[i]]
 				else:
 					return [nums.index(sortnums[i]), nums.index(sortnums[j])]
 

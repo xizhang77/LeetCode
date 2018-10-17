@@ -6,18 +6,18 @@ class Solution(object):
 		:rtype: List[List[int]]
 		"""
 
-		rowA = len(A)
-		colB = len(B[0])
-		colA = len(A[0])
+		m = len(A)
+		n = len(B[0])
+		l = len(A[0]) # Shared index
 
-		ans = [[0 for i in range(colB)] for j in range(rowA)]
+		ans = [[0 for i in range(n)] for j in range(m)]
 		
-		for i in range(rowA):
-			for j in range(colA):
-				if A[i][j]:
-					for k in range(colB):
-						if B[j][k]:
-							ans[i][k] += A[i][j]*B[j][k]
+		for i in range(m):
+			for k in range(l):
+				if A[i][k]:
+					for j in range(n):
+						if B[k][j]:
+							ans[i][j] += A[i][k]*B[k][j]
 
 		return ans
 

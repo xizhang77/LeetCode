@@ -37,11 +37,50 @@ please click the reload button to reset your code definition.
 
 '''
 这道题需要判断：
-1.正负号：只可以出现在数字之前，e之后
+1.正负号：只可以出现在数字之前，e之后 （当 s[i-1] != 'e' 是为Flase ）
 2.数字：整数或者带小数点
 3.e：只可以出现在两个数字之间, 即前面必须有数字，而且后面数字为整数
-4.空格：只可以在开始或者结尾，在中间为False
+4.空格：只可以在开始或者结尾, 可以用strip() 消除
 '''
+
+class Solution_Self(object): #isSign不是必须的，remove后也可以通过
+    def isNumber(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """        
+        s = s.strip()
+        if not s:
+            return False
+        
+        if s[0] in ['+', '-']:
+            s = s[1:]
+        
+        isNum, isExp, isSign, isDot = False, False, False, False
+        
+        for i in range(len(s)):
+            if s[i].isdigit():
+                isNum = True
+            
+            elif s[i] == 'e':
+                if not isNum or isExp:
+                    return False
+                isNum, isDot, isExp = False, False, True
+            
+            elif s[i] in ['+', '-']:
+                if s[i - 1] != 'e' or isSign:
+                    return False
+                isSign = True  
+                
+            elif s[i] == '.':
+                if isExp or isDot:
+                    return False
+                isDot = True
+            else:
+                return False
+        
+        return isNum
+
 
 class Solution(object):
 	def isNumber(self, s):

@@ -23,14 +23,14 @@ class Solution(object):
 		if num == '0':
 			return '0'
 		res = 0
-		ans = []
+		ans = ''
 		for i in range(len(num1)-1, -1, -1):
 			temp = int(num) * int(num1[i]) + res
 			res = temp/10
-			ans = [str(temp%10)] + ans
+			ans = str(temp%10) + ans
 		if res:
-			ans = [str(res)] + ans
-		return int(''.join(ans))
+			ans = str(res) + ans
+		return int(ans)
 
 	def multiply(self, num1, num2):
 		"""
@@ -38,7 +38,7 @@ class Solution(object):
 		:type num2: str
 		:rtype: str
 		"""
-		if num1 == '0' or num2 == '0' or not num1 or not num2:
+		if not num1 or not num2:
 			return '0'
 
 		if len(num1) < len(num2):
