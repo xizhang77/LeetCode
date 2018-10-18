@@ -27,7 +27,7 @@ Output: false
 '''
 LTE again... Try DP instead of DFS (too many return in DFS, which boost the time complexity)
 '''
-class Solution(object):
+class Solution_LTE(object):
 	def dfs(self, s, Dict, path):
 		if not s:
 			return True
@@ -60,7 +60,7 @@ class Solution(object):
 """
 AC solution using DP.
 """
-class AC_Solution(object):
+class Solution(object):
 
 	def wordBreak(self, s, wordDict):
 		"""
@@ -79,7 +79,7 @@ class AC_Solution(object):
 
 		return dp[n]
 
-obj = AC_Solution()
+obj = Solution()
 # print obj.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])
 
 print obj.wordBreak("leetcode", ["leet", "code"])
