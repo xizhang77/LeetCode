@@ -44,6 +44,10 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 '''
 
+'''
+Keypoints: hashMap
+'''
+
 class Solution(object):
     def intToRoman(self, num):
         """
