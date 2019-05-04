@@ -56,9 +56,10 @@ class Solution2(object):
         stack = []
         
         while root or stack:
-            while root:
+            if root:
                 stack.append( root )
                 root = root.left
+                continue
             
             root = stack.pop()
             ans.append( root.val )
