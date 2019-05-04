@@ -14,23 +14,22 @@
 ## String
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
-|12| [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium |[Python](./String/12_Integer_to_Roman.py) | _O(1)_| _O(1)_ | Math, String, HashMap |
-|13| [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy |[Python](./String/13_Roman_to_Integer.py) | _O(1)_| _O(1)_ | Math, String, HashMap |
+|12| [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium |[Python](./String/12_Integer_to_Roman.py) | _O(1)_| _O(1)_ | Math, String, HashTable |
+|13| [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy |[Python](./String/13_Roman_to_Integer.py) | _O(1)_| _O(1)_ | Math, String, HashTable |
 
 <br>
 
 ## Backtracking
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
-|22| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Medium |[Python](./String/22_Generate_Parentheses.py) | | | String, Backtracking |
-|46| [Permutations](https://leetcode.com/problems/permutations/) | Medium |[Python](./String/46_Permutations.py) | _O(n!)_ | _O(n!)_ | Backtracking |
-|78| [Subsets](https://leetcode.com/problems/subsets/) | Medium |[Python](./String/78_Subsets.py) | _O(2^n)_ | _O(2^n)_ | Array, Backtracking, Bit Manipulation |
+|22| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Medium |[Python](./Backtracking/22_Generate_Parentheses.py) | | | String, Backtracking |
+|46| [Permutations](https://leetcode.com/problems/permutations/) | Medium |[Python](./Backtracking/46_Permutations.py) | _O(n!)_ | _O(n!)_ | Backtracking |
+|78| [Subsets](https://leetcode.com/problems/subsets/) | Medium |[Python](./Backtracking/78_Subsets.py) | _O(2^n)_ | _O(2^n)_ | Array, Backtracking, Bit Manipulation |
 
 <br>
 
 ## Tree
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
-|94| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Medium |[Python](./String/22_Generate_Parentheses.py) | | | String, Backtracking |
-|100| [Permutations](https://leetcode.com/problems/permutations/) | Medium |[Python](./String/46_Permutations.py) | _O(n!)_ | _O(n!)_ | Backtracking |
-|78| [Subsets](https://leetcode.com/problems/subsets/) | Medium |[Python](./String/78_Subsets.py) | _O(n!)_ | _O(n!)_ | Array, Backtracking, Bit Manipulation |
+|94| [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) | Medium |[Python](./Tree/94_Binary_Tree_Inorder_Traversal.py) | _O(n)_ | _O(n)_ | Tree, Stack, DFS |
+|100| [Same Tree](https://leetcode.com/problems/same-tree/) | Medium |[Python](./Tree/100_Same_Tree.py) | _O(n)_ | _O(1)_ | Tree, DFS, Stack |
