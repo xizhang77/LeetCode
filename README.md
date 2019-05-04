@@ -13,6 +13,6 @@
 
 ## String
 |  #  | Title | Difficulty | Solution | Time | Space | Notes|
-| --- | ----- | -------- | ---- | ----- | ---- |
+| --- | ----- | -------- | ---- | ----- | ---- | ---- |
 |12| [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium |[Python](./String/12_Integer_to_Roman.py) | _O(n)_| _O(1)_ | HashMap |
 |13| [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy |[Python](./String/13_Roman_to_Integer.py) | _O(n)_| _O(1)_ | HashMap |
