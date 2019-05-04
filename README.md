@@ -10,6 +10,11 @@
 
 <br>
 
+## Array
+|  #  | Title | Difficulty | Solution | Time | Space | Tags|
+| --- | ----- | -------- | ---- | ----- | ---- | ---- |
+|1| [Two Sum](https://leetcode.com/problems/two-sum/) | Easy |[Python](./Array/1_Two_Sum.py) | _O(nlogn)_| _O(1)_ | Array, HashTable, TwoPointer |
+
 
 ## String
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
