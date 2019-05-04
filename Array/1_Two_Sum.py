@@ -13,7 +13,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 '''
 
-# Solution 1: Two pointer 
+# Solution 1: Two pointer (Time: O(nlogn) due to the sorting function; Otherwise is O(n))
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -36,3 +36,26 @@ class Solution(object):
                     return sorted([ nums.index(sortNum[i]), nums.index(sortNum[j])])
                 else:
                     return sorted([idx for idx in range( len(nums)) if nums[idx] == sortNum[i]])
+
+# Solution 2: Hash Table (Time: O(n); Space: O(n))
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hashMap = {}
+        
+        for i in range( len(nums) ):
+            if nums[i] not in hashMap:
+                hashMap[ nums[i] ] = [ i ]
+            else:
+                hashMap[ nums[i] ] += [ i ]
+        
+        for i in range( len(nums) ):
+            if target - nums[i] in hashMap and target - nums[i] != nums[i]:
+                return hashMap[ nums[i] ] + hashMap[ target - nums[i] ]
+            elif target - nums[i] == nums[i] and len( hashMap[ nums[i] ] ) == 2:
+                return hashMap[ nums[i] ]
+                
