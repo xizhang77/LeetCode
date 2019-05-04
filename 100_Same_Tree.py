@@ -84,3 +84,28 @@ class Solution2(object):
             return False
         
         return self.isSameTree( p.left, q.left ) and self.isSameTree( p.right, q.right ) 
+
+# [Iterative with Stack] Runtime: 20 ms, faster than 79.01% of Python online submissions for Same Tree.
+class Solution3(object):
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        stack = [ [p, q] ]
+        
+        while stack:
+            node1, node2 = stack.pop()
+            
+            if not node1 and not node2:
+                continue
+            if (not node1) or (not node2):
+                return node1 == node2
+            if node1.val != node2.val:
+                return False
+            
+            stack.append( [node1.left, node2.left] )
+            stack.append( [node1.right, node2.right] )
+        
+        return True
