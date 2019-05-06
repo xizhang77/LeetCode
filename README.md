@@ -7,6 +7,7 @@
 
 初步计划，会先按照Tag过一遍常见算法，做时间空间复杂度的整理和各个知识点的总结。
 
+[Some important questions are summarized below]
 
 <br>
 
@@ -19,15 +20,13 @@
 ## String
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
-|12| [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium |[Python](./String/12_Integer_to_Roman.py) | _O(1)_| _O(1)_ | Math, String, HashTable |
-|13| [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy |[Python](./String/13_Roman_to_Integer.py) | _O(1)_| _O(1)_ | Math, String, HashTable |
+
 
 <br>
 
 ## Backtracking
 |  #  | Title | Difficulty | Solution | Time | Space | Tags|
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
-|22| [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Medium |[Python](./Backtracking/22_Generate_Parentheses.py) | | | String, Backtracking |
 |46| [Permutations](https://leetcode.com/problems/permutations/) | Medium |[Python](./Backtracking/46_Permutations.py) | _O(n!)_ | _O(n!)_ | Backtracking |
 |78| [Subsets](https://leetcode.com/problems/subsets/) | Medium |[Python](./Backtracking/78_Subsets.py) | _O(2^n)_ | _O(2^n)_ | Array, Backtracking, Bit Manipulation |
 
