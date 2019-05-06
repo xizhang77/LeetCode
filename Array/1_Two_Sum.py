@@ -13,7 +13,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 '''
 
-# Solution 1: Two pointer (Time: O(nlogn) due to the sorting function; Otherwise is O(n))
+# Solution 1: Two pointer (Time: O(nlogn) due to the sorting function; Otherwise is O(n); Space: O(n))
 class Solution(object):
     def twoSum(self, nums, target):
         """
