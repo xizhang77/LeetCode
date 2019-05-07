@@ -37,3 +37,11 @@
 | --- | ----- | -------- | ---- | ----- | ---- | ---- |
 |94| [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) | Medium |[Python](./Tree/94_Binary_Tree_Inorder_Traversal.py) | _O(n)_ | _O(n)_ | Tree, Stack, DFS |
 |100| [Same Tree](https://leetcode.com/problems/same-tree/) | Medium |[Python](./Tree/100_Same_Tree.py) | _O(n)_ | _O(1)_ | Tree, DFS, Stack |
+
+
+<br>
+
+## Hash Table
+|  #  | Title | Difficulty | Solution | Time | Space | Tags|
+| --- | ----- | -------- | ---- | ----- | ---- | ---- |
+|36| [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) | Medium |[Python](./HashTable/36_Valid_Sudoku.py) | _O(n^2)_ | _O(1)_/_O(n^2)_ | Hash Table, Set |
