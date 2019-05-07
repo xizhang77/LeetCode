@@ -86,3 +86,21 @@ class Solution(object):
             j += 1
             
         return i + 1
+
+# Solution 4: [AC version with two pointers, faster than Solution 3]
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        total = len( nums )
+        
+        i = 0
+        
+        for j in range( total - 1 ):
+            if nums[j] != nums[ j + 1 ]:
+                i += 1
+                nums[i] = nums[j+1]
+        
+        return i + 1
