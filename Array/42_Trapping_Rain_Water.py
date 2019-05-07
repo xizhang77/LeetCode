@@ -59,3 +59,29 @@ class Solution2(object):
             ans += max( 0, min(left, right[i]) - height[i])
         
         return ans
+
+# [AC version with Two Pointer] Time: O(n); Space: O(1)
+class Solution3(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        i, j = 0 , len(height) - 1
+        
+        ans = 0
+        
+        left, right = 0, 0
+        
+        while i < j:
+            left = max( left, height[i] )
+            right = max( right, height[j] )
+            
+            if left < right:
+                ans += ( left - height[i] )
+                i += 1
+            else:
+                ans += ( right - height[j] )
+                j -= 1
+        
+        return ans
