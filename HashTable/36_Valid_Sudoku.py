@@ -86,4 +86,24 @@ class Solution(object):
             
         return True
 
-# Solution 2: Much faster version
+# Solution 2: Much simpler version; Time: O(n^2) Space: O(n^2)
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        check = set()
+        
+        n = len(board)
+        
+        for i in range( n ):
+            for j in range( n ):
+                if board[i][j] != '.':
+                    if (i, board[i][j]) in check or (board[i][j], j) in check or (i/3, j/3, board[i][j]) in check:
+                        return False
+                    check.add( (i, board[i][j]) )
+                    check.add( (board[i][j], j) )
+                    check.add( (i/3, j/3, board[i][j]) )
+        
+        return True
