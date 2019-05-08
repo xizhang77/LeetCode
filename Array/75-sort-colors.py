@@ -25,8 +25,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        i, j, k = 0, 0, len(nums) - 1 # 0, 1, 2 correspondingly
+        i, j, k = 0, 0, len(nums) - 1 
         
+        # j goes through the whole nums for checking 
+        # i is one position after the end of 0
+        # k is one position before the start of 2
+
         while j <= k:
             if nums[j] == 0:
                 nums[i], nums[j] = nums[j], nums[i]
