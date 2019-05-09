@@ -32,7 +32,8 @@ Bonus points if you could solve it both recursively and iteratively.
 #         self.left = None
 #         self.right = None
 
-# Solution 1 [Iterative/DFS]. Time: O(n); Space: O(lgn)
+# Solution 1 [Iterative/DFS]. Time: O(n); Space: O(lgn) [bounded by the # of leaves]
+
 class Solution(object):
     def isSymmetric(self, root):
         """
@@ -61,4 +62,19 @@ class Solution(object):
         return True
 
 
-# Solution 2 [Recursive/BFS]. Time: O(n); Space: O(lgn)
+# Solution 2 [Recursive/BFS]. Time: O(n); 
+# Space: O(n) [Bounded by the height of tree. Worst case, the tree is linear and the height is in O(n)]
+
+class Solution(object):
+    def dfs(self, node1, node2):
+    	if node1 and node2:
+        	return (node1.val == node2.val) & self.dfs(node1.right, node2.left) & self.dfs(node1.left, node2.right)
+        else:
+        	return node1 == node2
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """        
+        
+        return self.dfs( root, root )
