@@ -27,6 +27,9 @@ return its depth = 3.
 #         self.left = None
 #         self.right = None
 
+
+# Time & Space [For both solutions] O(n)
+
 # [Solution 1: Recursive]
 class Solution1(object):
     def dfs(self, root, level ):
