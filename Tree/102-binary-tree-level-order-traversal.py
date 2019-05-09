@@ -25,7 +25,7 @@ return its level order traversal as:
 #         self.right = None
 
 # [BFS, Iterative] Time: O(n); Space: O(lgn)
-class Solution(object):
+class Solution1(object):
     def levelOrder(self, root):
         """
         :type root: TreeNode
@@ -56,7 +56,7 @@ class Solution(object):
 
 
 # [DFS, Recursive] Time: O(n); Space: O(n)
-class Solution(object):
+class Solution2(object):
     def dfs(self, node, level, ans):
         if not node:
             return
