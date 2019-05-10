@@ -58,4 +58,20 @@ class Solution(object):
         
         return ans
 
-# Solution 2 [Bit & Math]
+# Solution 2 [Bit Manipulation]
+class Solution(object):
+    def grayCode(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        dp = [ 0, 1 ]
+        
+        if n <= 1:
+            return dp[:n+1]
+        
+        for i in range(2, n + 1):
+            temp = [ 2**(i-1)^num for num in dp[::-1] ]
+            dp += temp
+        
+        return dp
