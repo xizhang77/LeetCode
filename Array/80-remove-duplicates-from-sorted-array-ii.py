@@ -21,6 +21,8 @@ Your function should return length = 7, with the first seven elements of nums be
 It doesn't matter what values are set beyond the returned length.
 '''
 
+# Solution 1, Beat 86% (Code is not elegant)
+# Time: O(n); Space: O(1)
 class Solution(object):
     def removeDuplicates(self, nums):
         """
@@ -48,4 +50,23 @@ class Solution(object):
                 elif i - 1 >= 0 and nums[i-1] != nums[i]:
                     count = 1
                     i += 1
+        return i
+
+
+# [More elegant version]
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        i = 0
+        
+        for j in range( len(nums) ):
+            if nums[i] != nums[j]:
+                nums[i] = nums[j]
+            
+            if i < 2 or nums[i] != nums[i-2]:
+                i+= 1
+        
         return i
