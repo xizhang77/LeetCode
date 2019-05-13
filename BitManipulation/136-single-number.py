@@ -18,7 +18,7 @@ Output: 4
 '''
 
 # Solution 1: Bit Manipulation
-
+# Time: O(n); Space: O(1) 
 class Solution1(object):
     def singleNumber(self, nums):
         """
@@ -33,7 +33,7 @@ class Solution1(object):
         return ans
 
 # Solution 2: Hash Table / Set
-
+# Time: O(n); Space: O(n/2)=O(n)
 class Solution(object):
     def singleNumber(self, nums):
         """
