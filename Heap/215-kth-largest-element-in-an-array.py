@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 '''
 Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
@@ -16,7 +17,8 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 '''
 # Solution 1: Priority Queue / Heap
-
+# Time: O(k*n) (O(k) for sorting the heap)
+# Space: O(k)
 import heapq
 class Solution(object):
     def findKthLargest(self, nums, k):
