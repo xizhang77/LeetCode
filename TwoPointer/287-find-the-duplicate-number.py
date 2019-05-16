@@ -39,6 +39,11 @@ class Solution(object):
 
 # Soluiton 3 [Linked List??]
 # Refer to LeetCode 142: https://leetcode.com/problems/linked-list-cycle-ii/
+'''
+那么如果序列是重复的，[1,3,3,2]，那么下标对应数字时会有重复，路径就会出现环！
+0->1->3->2->3->2…，会出现3 2 这个环，那么环开始的地方就是重复的数字。
+这时就可以利用LeetCode.142 中的方法找到环起始的位置。
+'''
 class Solution(object):
     def findDuplicate(self, nums):
         """
