@@ -15,6 +15,15 @@ Note: Do not modify the linked list.
 #         self.val = x
 #         self.next = None
 
+'''
+首先用slow，fast双指针判断是否有cycle；
+
+假设Head到环起点的长度为n，环部分的长度为m（list总长m+n）,假设slow和fast走到第t步相遇
+那么相遇的情况为：（t-n)%m + n = (2*t-n)%m + n, 可以得到: t%m = 0
+因此让finder和slow一个从起点一个从相遇点继续走，再走n步就会相遇（ (t+n)%m = n ）
+而这时finder刚好走到环的起点
+'''
+
 class Solution(object):
     def detectCycle(self, head):
         """
