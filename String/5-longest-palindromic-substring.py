@@ -82,3 +82,31 @@ class Solution(object):
 
 # Solution 3: DP
 # Time & Space: O(n^2)
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        n = len(s)
+        
+        dp = [ [False] * n for _ in range(n) ]
+        
+        iAns = 0
+        jAns = 0
+        
+        for i in range(n):
+            dp[i][i] = True
+            iAns, jAns = i, i
+        
+        for i in range( n - 1 ):
+            dp[i][i+1] = (s[i] == s[i+1])
+            if dp[i][i+1]:
+                iAns, jAns = i, i + 1
+        
+        for ln in range( 3, n + 1 ):
+            for i in range( n - (ln - 1) ):
+                if dp[i+1][i+ln-2] and s[i]==s[i+ln-1]:
+                    dp[i][i+ln-1] = True
+                    iAns, jAns = i, i + ln-1
+        return s[iAns: jAns + 1]
