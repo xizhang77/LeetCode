@@ -23,6 +23,15 @@ Depending on your language, stack may not be supported natively. You may simulat
 You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).
 '''
 
+'''
+和 #225-implement-stack-using-queues 类似，使用2个栈操作。
+
+push时，所有元素压入stk1；pop时，从stk2弹出。
+当stk2为空时，stk1倒入stk2，这样stk2的顺序既为queue进出的顺序。
+
+这样push的时间复杂度为O(1)，pop和top的时间复杂度Amortized O(1), Worst-case O(n).
+'''
+
 class MyQueue(object):
 
     def __init__(self):
