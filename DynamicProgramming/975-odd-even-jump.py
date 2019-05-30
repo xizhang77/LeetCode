@@ -49,3 +49,36 @@ class Solution(object):
                 count += 1
         
         return count
+
+
+# Solution 2: Stack + DP
+# Refer: https://leetcode.com/problems/odd-even-jump/discuss/217981/JavaC%2B%2BPython-DP-idea-Using-TreeMap-or-Stack
+class Solution(object):
+    def oddEvenJumps(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        n = len(A)
+        
+        next_low, next_high = [ 0 ] * n, [ 0 ] * n
+        
+        stack = []
+        for a, i in sorted([a, i] for i, a in enumerate(A)):
+            while stack and stack[-1] < i:
+                next_high[ stack.pop() ] = i
+            stack.append( i )
+        
+        stack = []
+        for a, i in sorted([-a, i] for i, a in enumerate(A)):
+            while stack and stack[-1] < i:
+                next_low[ stack.pop() ] = i
+            stack.append( i )
+                
+        lower, higher = [ 0 ] * n, [ 0 ] * n
+        lower[-1] = higher[-1] = 1
+        for i in range( n - 2, -1, -1 ):
+            higher[ i ] = lower[ next_high[i] ]
+            lower[ i ] = higher[ next_low[i] ]
+        
+        return sum( higher )
