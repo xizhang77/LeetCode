@@ -17,6 +17,9 @@ Explanation: transactions = [buy, sell, cooldown, buy, sell]
 
 '''
 Refer: https://blog.csdn.net/fuxuemingzhu/article/details/82656899
+
+[真的好难啊…看了很多分析才算勉强理解了…]
+
 '''
 # Time & Space: O(n)
 class Solution(object):
