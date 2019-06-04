@@ -3,6 +3,7 @@
 https://leetcode.com/problems/subdomain-visit-count/
 '''
 
+# Time: O(n)
 class Solution(object):
     def subdomainVisits(self, cpdomains):
         """
