@@ -62,6 +62,72 @@ class Solution(object):
         return ans
 
 # Solution 2: Union find
+# 2-1: need one more for foop at the end to finally merge everything
+class Solution(object):
+    def find(self, parent, p):
+        while p != parent[p]:
+            p = parent[p]
+        return p
+    
+    def union(self, parent, p, q):
+        id_p, id_q = self.find(parent, p), self.find(parent, q)
+        if id_p == id_q:
+            return
+        parent[ id_q ] = id_p
+        return
+    
+    def findCircleNum(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: int
+        """
+        if not M or not M[0]:
+            return 0
+        n = len(M)
+        parent = range( n )
+        
+        for i in range(n):
+            for j in range(n):
+                if M[i][j] == 1 and i != j:
+                    M[i][j] = M[j][i] = 0
+                    self.union(parent, i, j)
+        
+        for i in range(n):
+            parent[i] = self.find( parent, i )
+            
+        return len( set(parent) )
 
 
+# 2-2: one path merge. only count the one without parent.
+class Solution(object):
+    def find(self, p):
+        if self.parent[p] == -1:
+            return p
+        return self.find( self.parent[p] )
+    
+    def union(self, p, q):
+        id_p, id_q = self.find( p ), self.find( q )
+        if id_p == id_q:
+            return
+        self.parent[ id_q ] = id_p
+        
+        return
+    
+    def findCircleNum(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: int
+        """
+        if not M or not M[0]:
+            return 0
+        n = len(M) 
+        self.parent = [ -1 ] * n
+        
+        for i in range( n ):
+            for j in range( n ):
+                if M[i][j] == 1 and i != j:
+                    M[i][j] = M[j][i] = 0
+                    self.union( i, j )
+        
+        return sum( [1 for i in range(n) if self.parent[i] == -1 ])
 # Solution 3: BFS
