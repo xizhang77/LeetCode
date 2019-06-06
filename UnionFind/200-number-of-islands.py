@@ -55,6 +55,7 @@ class Solution(object):
 
 
 # Solution 2: Union Find
+# 2-1: Using an array
 class Solution(object):
     def find(self, x):
         while x != self.parent[ x ]:
@@ -93,3 +94,46 @@ class Solution(object):
                         self.union( idx, idx + n )
         
         return self.count
+
+# 2-2: Using a hashMap
+class Solution(object):
+    def find(self, p):
+        if p not in self.hashMap:
+            self.hashMap[ p ] = p
+            return
+        while p != self.hashMap[ p ]:
+            p = self.hashMap[ p ]
+        return p
+    def union(self, p, q):
+        id_p, id_q = self.find( p ), self.find( q )
+        if id_p == id_q:
+            return
+        self.hashMap[ id_q ] = id_p
+        return
+    
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if not grid or not grid[0]:
+            return 0
+        
+        self.hashMap = {}
+        m, n = len(grid), len( grid[0] )
+        direct = [ [1,0], [0,1], [-1,0], [0,-1] ]
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == '1':
+                    self.hashMap[ (i,j) ] = (i,j)
+                    for d in direct:
+                        ii, jj = i + d[0], j + d[1]
+                        if 0<=ii<m and 0<=jj<n and grid[ii][jj] == '1':
+                            self.union( (i,j), (ii,jj) )
+                
+        for key in self.hashMap:
+            self.hashMap[ key ] = self.find( key )
+        
+        
+        return len( set(self.hashMap.values()))
