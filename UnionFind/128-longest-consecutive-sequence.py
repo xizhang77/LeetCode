@@ -36,3 +36,29 @@ class Solution(object):
             ans = max(ans, end - start + 1)
         
         return ans
+
+# Both of the solutions are inspired by Union Find
+
+class Solution(object):
+    def longestConsecutive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        hashmap = {}
+        
+        for num in nums:
+            hashmap[ num ] = num
+          
+        ans = 0
+        
+        for num in nums:
+            temp = num
+            while temp - 1 in hashmap and hashmap[ temp ] != hashmap[ temp - 1]:
+                temp -= 1
+            for val in range( temp, num + 1):
+                hashmap[ val ] = hashmap[ temp ]
+                
+            ans = max( ans, num - hashmap[ temp ] + 1 )
+            
+        return ans
