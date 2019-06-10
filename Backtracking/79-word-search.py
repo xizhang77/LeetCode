@@ -19,7 +19,21 @@ Given word = "SEE", return true.
 Given word = "ABCB", return false.
 '''
 
+
+# Add function preCheck can improve the whole solution from 400ms [32%] to 192ms [96%]
 class Solution(object):
+    def preCheck(self, board, word, m, n):
+        wordCount = Counter(word)
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] in wordCount:
+                    wordCount[ board[i][j] ] -= 1
+        
+        for key in wordCount:
+            if wordCount[ key ] > 0:
+                return False
+        
+        return True
     def dfs(self, board, word, i, j, m, n, path ):
         if self.ans:
             return
