@@ -61,3 +61,40 @@ class Solution1(object):
                     break
             
         return ans
+
+
+# Refer: https://blog.csdn.net/alicelmx/article/details/83273598
+class Solution(object):
+    def findSubstring(self, s, words):
+        """
+        :type s: str
+        :type words: List[str]
+        :rtype: List[int]
+        """
+        if not words:
+            return []
+        
+        wordmap = {}
+        for word in words:
+            wordmap[ word ] = wordmap[ word ] + 1 if word in wordmap else 1
+        
+        
+        m, n = len( words[0] ), len( words )
+        ans = []
+        
+        for i in range( len(s) - n*m + 1 ):
+            smap = {}
+            for j in range( i, m * n + i, m ):
+                word = s[j:j+m]
+                if word not in wordmap:
+                    break
+                
+                smap[ word ] = smap[ word ] + 1 if word in smap else 1
+                if smap[ word ] > wordmap[ word ]:
+                    break
+            
+            if smap == wordmap:
+                ans.append( i )
+
+            
+        return ans
