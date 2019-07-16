@@ -14,6 +14,7 @@ Then length of the input array is in range [1, 10,000].
 The input array may contain duplicates, so ascending order here means <=.
 '''
 
+# Time: O(n)
 class Solution(object):
     def findUnsortedSubarray(self, nums):
         """
