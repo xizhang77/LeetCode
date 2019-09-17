@@ -18,6 +18,8 @@ Output: [[1,2],[3,10],[12,16]]
 Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 '''
 
+# Solution 1
+# Time: O(n); Space: O(n) (due to range) 2 paths
 class Solution(object):
     def insert(self, intervals, newInterval):
         """
@@ -44,5 +46,34 @@ class Solution(object):
                 n -= 1
             else:
                 i += 1
+
+# Solution 2
+# Time: O(n); 1 path
+class Solution(object):
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[List[int]]
+        :type newInterval: List[int]
+        :rtype: List[List[int]]
+        """
+        if not intervals or newInterval[1] < intervals[0][0]:
+            intervals.insert( 0, newInterval )
+            return intervals
         
+        if  newInterval[0] > intervals[-1][1]:
+            intervals.append( newInterval )
+            return intervals
+        
+        i = 0
+        while i < len(intervals):
+            if intervals[i][1] < newInterval[0]:
+                i += 1
+            else:
+                intervals.insert( i, newInterval )
+                while i + 1 < len(intervals) and intervals[i][1] >= intervals[i+1][0]:
+                    temp = intervals.pop( i+1 )
+                    intervals[i] = [ min(intervals[i][0], temp[0]), max(intervals[i][1], temp[1]) ]
+                break
+        
+        return intervals 
         return intervals
