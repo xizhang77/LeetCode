@@ -52,3 +52,32 @@ class Solution(object):
                     count += 1
                     
         return count
+
+# Solution 2
+# Time: O(n^2); Space: O(1) [Runtime: 96 ms, faster than 78.68% ]
+class Solution(object):
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        ans = 0
+        
+        
+        for i in range( len(s) ):
+            ans += 1       
+            p, q = i - 1, i + 1
+            while p >= 0 and q < len(s) and s[p] == s[q]:
+                ans += 1
+                p -= 1
+                q += 1
+            
+            if i + 1 < len(s) and s[i] == s[i+1]:
+                ans += 1
+                p, q = i - 1, i + 2
+                while p >= 0 and q < len(s) and s[p] == s[q]:
+                    ans += 1
+                    p -= 1
+                    q += 1
+            
+        return ans
