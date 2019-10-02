@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+Given an integer array nums, find the contiguous subarray 
+(containing at least one number) which has the largest sum and return its sum.
 
 Example:
 
@@ -10,7 +11,8 @@ Output: 6
 Explanation: [4,-1,2,1] has the largest sum = 6.
 Follow up:
 
-If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+If you have figured out the O(n) solution, try coding another solution 
+using the divide and conquer approach, which is more subtle.
 
 '''
 
@@ -32,29 +34,29 @@ class Solution1(object):
         return ans
 
 # [Solution 2 using Divide and Conquer]
-# Time: O(nlgn); Space: O(1)
+# Time: O(nlgn)
 
 class Solution(object):
-    def divideConquer(self, nums, l, r):
-        if l > r:
+    def div(self, nums):
+        if not nums:
             return -float('inf')
         
-        mid = (l + r)/2
+        mid = len(nums)/2
         
-        temp = leftSum = 0
-        for i in range( mid - 1, l - 1, -1):
+        leftSum = temp = 0
+        for i in range( mid-1, -1, -1 ):
             temp += nums[i]
-            leftSum = max(leftSum, temp)
-            
-        temp = rightSum = 0
-        for j in range( mid + 1, r + 1 ):
-            temp += nums[j]
-            rightSum = max(rightSum, temp)
+            leftSum = max(leftSum, temp )
         
-        left = self.divideConquer( nums, l, mid - 1)
-        right = self.divideConquer( nums, mid + 1, r)
+        rightSum = temp = 0
+        for i in range( mid+1, len(nums) ):
+            temp += nums[i]
+            rightSum = max(rightSum, temp )
         
-        return max( leftSum + nums[mid] + rightSum, max(left, right) )
+        left = self.div( nums[:mid] )
+        right = self.div( nums[mid+1:])
+        
+        return max( leftSum + nums[mid] + rightSum, left, right )
         
     def maxSubArray(self, nums):
         """
@@ -62,4 +64,4 @@ class Solution(object):
         :rtype: int
         """
         
-        return self.divideConquer( nums, 0, len(nums) - 1)
+        return self.div( nums )
