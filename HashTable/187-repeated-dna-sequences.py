@@ -18,16 +18,13 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
-        ans = []
-        
-        hashMap = {}
-        
-        for i in range( len(s) - 10 + 1 ):
-            if s[i:i+10] not in hashMap:
-                hashMap[ s[i:i+10] ] = i
+        ans = set()
+        check = set()
+        for i in range( len(s) - 9 ):
+            temp = s[i:i+10]
+            if temp not in check:
+                check.add( temp )
             else:
-                if s[i:i+10] not in ans:
-                    ans.append( s[i:i+10] )
-
+                ans.add( temp )
         
-        return ans
+        return list( ans )
