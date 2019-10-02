@@ -30,6 +30,32 @@ exection -> execution (insert 'u')
 
 '''
 
+# Solution 1
+# Time: O(m*n); Space: O(n)
+class Solution(object):
+    def minDistance(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
+        m, n = len(word1), len(word2)
+        
+        dp = range(n+1)
+        
+        for i in range(1, m+1):
+            temp = [i]
+            for j in range(1, n+1):
+                if word1[i-1] == word2[j-1]:
+                    flag = 0
+                else:
+                    flag = 1
+                temp += [ min(dp[j-1]+flag,dp[j]+1, temp[-1]+1) ]
+            dp = temp
+                        
+        return dp[-1]
+
+# Solution 2
 # Time & Space: O(m*n)
 class Solution(object):
     def minDistance(self, word1, word2):
