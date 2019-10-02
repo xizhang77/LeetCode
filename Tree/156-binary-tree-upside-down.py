@@ -11,6 +11,39 @@ https://leetcode.com/problems/binary-tree-upside-down/
 #         self.left = None
 #         self.right = None
 
+# Solution 1
+class Solution1(object):
+    def dfs(self, root, parent, stack):
+        if not root:
+            return
+        stack.append( [root, parent ] )
+        self.dfs( root.left, root, stack )
+        
+    def solver(self, stack):
+        if not stack:
+            return
+        
+        node, parent = stack.pop()
+        if parent:
+            node.left = parent.right
+            parent.left = None
+            parent.right = None
+        node.right = self.solver( stack )
+        
+        return node
+        
+    def upsideDownBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        stack = []
+        self.dfs( root, None, stack )
+        
+        return self.solver( stack )
+
+
+# Solution 2
 from collections import OrderedDict
 class Solution(object):
     def dfs(self, node, parent):
