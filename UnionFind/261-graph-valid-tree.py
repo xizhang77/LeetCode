@@ -27,6 +27,7 @@ class Solution(object):
         root_p, root_q = self.find( p ), self.find( q )
         if root_p == root_q:
             return False
+        self.count -= 1
         self.parent[ root_q ] = root_p
         
         return True
@@ -39,20 +40,14 @@ class Solution(object):
         """
         
         self.parent = range( n )
+        self.count = n
         
         for edge in edges:
             if not self.union( edge[0], edge[1] ):
                 return False
         
-        check = set()
-        for i in range(n):
-            p = self.find( i )
-            if p not in check:
-                check.add( p )
-            if len(check) > 1:
-                return False
             
-        return True
+        return self.count == 1
         
         
         
