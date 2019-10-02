@@ -23,16 +23,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        currMax, currMin = 1, 1 
         
         ans = -float('inf')
+        _max = _min = 1
         
-        for num in nums:            
-            temp = currMax
+        for num in nums:
+            new_min = min( num, _min*num, _max*num )
+            new_max = max( num, _max*num, _min*num )
+
+            ans = max(new_max, ans)
+            _max, _min = new_max, new_min
             
-            currMax = max( num, num*currMax, num*currMin)
-            currMin = min( num, num*temp, num*currMin )
-            
-            ans = max( ans, currMax )
-        
         return ans
