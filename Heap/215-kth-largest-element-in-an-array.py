@@ -35,3 +35,23 @@ class Solution(object):
                 heapq.heappop( stack )
         
         return heapq.heappop( stack )
+
+# Time: O(k*n) [faster than Solution 1]
+class Solution2(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        stack = []
+        
+        for num in nums:
+            if len(stack) < k:
+                heapq.heappush( stack, num )
+            else:
+                val = stack[0]
+                if num > val:
+                    heapq.heappop( stack )
+                    heapq.heappush( stack, num )
+        return stack[0]
