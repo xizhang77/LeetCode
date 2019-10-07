@@ -11,6 +11,32 @@ https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/
 #         self.left = None
 #         self.right = None
 
+# Solution 1
+# Time: O(n); Space: O(1)
+class Solution(object):
+    def dfs(self, root):
+        if not root:
+            return
+        
+        if self.min < root.val < self.ans:
+            self.ans = root.val
+        self.dfs( root.left )
+        self.dfs( root.right )
+        
+    def findSecondMinimumValue(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.ans = float('inf')
+        self.min = root.val
+        
+        self.dfs( root )
+        
+        return self.ans if self.ans != float('inf') else -1
+
+# Solution 2
+# Time: O(n); Space: O(n)
 class Solution(object):
     def dfs(self, root, check):
         if not root:
