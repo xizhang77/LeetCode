@@ -18,7 +18,9 @@ You may assume that word1 does not equal to word2,
 and word1 and word2 are both in the list.
 '''
 
-# Time: O(n)+O(k), where k is the longest lengh of idx
+# Time: O(n)+O(k)
+# O(n) if for constructing the map;
+# O(k) if for getting the result, where k is the longest lengh of idx
 # Space: O(n)
 class WordDistance(object):
 
