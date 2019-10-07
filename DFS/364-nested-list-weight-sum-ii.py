@@ -62,24 +62,24 @@ Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2
 #        :rtype List[NestedInteger]
 #        """
 
+# Solution 1: BFS
+from collections import defaultdict
+
 class Solution(object):
     def depthSumInverse(self, nestedList):
         """
         :type nestedList: List[NestedInteger]
         :rtype: int
         """
-        hashmap = {}
+        hashmap = defaultdict( int )
         
         current = nestedList
         level = 1
         while current:
-            if level not in hashmap:
-                hashmap[ level ] = []
-            
             nextlevel = []
             for val in current:
                 if val.isInteger():
-                    hashmap[ level ] += [ val.getInteger() ]
+                    hashmap[ level ] += val.getInteger()
                 else:
                     nextlevel += val.getList()
             level += 1
@@ -87,5 +87,36 @@ class Solution(object):
         
         ans = 0
         for key in hashmap:
-            ans += (level - key)*sum( hashmap[key] )
+            ans += (level - key) * hashmap[key]
+        return ans
+
+# Solution 2: DFS
+from collections import defaultdict
+
+class Solution(object):
+    def dfs(self, level, num):
+        if not num:
+            return
+        self.depth = max( self.depth, level )
+        if not num.isInteger():
+            nested = num.getList()
+            for newnum in nested:
+                self.dfs( level+1, newnum )
+        else:
+            self.map[ level ] += num.getInteger()
+        
+    def depthSumInverse(self, nestedList):
+        """
+        :type nestedList: List[NestedInteger]
+        :rtype: int
+        """
+        self.map = defaultdict( int )
+        self.depth = 1
+        for num in nestedList:
+            self.dfs( 1, num )
+        
+        ans = 0
+        for key in self.map:
+            ans += (self.depth - key + 1)*self.map[ key ]
+        
         return ans
