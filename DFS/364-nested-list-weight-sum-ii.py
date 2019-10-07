@@ -62,6 +62,10 @@ Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2
 #        :rtype List[NestedInteger]
 #        """
 
+# Time Complexity: O(m+n); Space: O(m)
+# Where n is the number of nodes and m is the levels
+
+
 # Solution 1: BFS
 from collections import defaultdict
 
