@@ -101,3 +101,32 @@ class Solution2(object):
         ans = [ val[1] for val in stack ]
         
         return ans
+
+
+# Solution 3: Brute Force
+# Time % Space: O(n)
+class Solution(object):
+    def dfs(self, root):
+        if not root:
+            return
+        self.dfs( root.left )
+        self.path.append( root.val )
+        self.dfs( root.right )
+        
+    def closestKValues(self, root, target, k):
+        """
+        :type root: TreeNode
+        :type target: float
+        :type k: int
+        :rtype: List[int]
+        """
+        self.path = []
+        self.dfs( root )
+        
+        while len(self.path) > k:
+            if abs( target - self.path[0] ) > abs( target - self.path[-1] ):
+                self.path.pop(0)
+            else:
+                self.path.pop()
+        
+        return self.path
