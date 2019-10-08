@@ -35,6 +35,10 @@ p and q are different and both values will exist in the BST.
 #         self.left = None
 #         self.right = None
 
+# Worst case, the time complexity is O(n) if each node has only one child and 
+# p & q are leaves. However, for a balanced BST, the time complexity is O(logn)
+# since each time we cut half of the tree.
+
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         """
