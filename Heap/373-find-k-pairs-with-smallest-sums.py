@@ -4,6 +4,34 @@
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
 '''
 
+# Time: O(klogk) (since we have break condition in the for loop)
+# Space: O(k)
+import heapq
+class Solution(object):
+    def kSmallestPairs(self, nums1, nums2, k):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        stack = []
+        
+        for i in nums1:
+            for j in nums2:
+                temp = i + j
+                if len(stack) < k:
+                    heapq.heappush( stack, (-temp, [i,j]) )
+                else:
+                    currmax = - stack[0][0]
+                    if temp < currmax:
+                        heapq.heappop( stack )
+                        heapq.heappush( stack, (-temp, [i,j]) )
+                    else:
+                        break
+        
+        return[ val[1] for val in stack ]
+
 
 # Time: O(m*n*log(k))
 import heapq
