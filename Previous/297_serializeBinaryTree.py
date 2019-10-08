@@ -29,6 +29,8 @@ Note: Do not use class member/global/static variables to store states. Your seri
 #         self.left = None
 #         self.right = None
 
+# Time and Space: O(n)
+
 from collections import deque
 class Codec:
     def preOrder(self, root, ans):
