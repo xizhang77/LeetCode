@@ -30,6 +30,10 @@ class Solution(object):
         if not s:
             return 0
         
+        # Running time improved from 2500 to 980 (5% to 85%)
+        if s == s[::-1]:
+            return len(s)
+
         n = len(s)
         
         dp = [ [0]*n for _ in range(n) ]
