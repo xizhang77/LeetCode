@@ -14,6 +14,33 @@ Note:
 The length of the given array won't exceed 1000.
 The integers in the given array are in the range of [0, 1000].
 '''
+# Solution 1: Two Pointer
+# Time: O(n^2); Space: O(1)
+class Solution(object):
+    def triangleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort(reverse = True)
+        
+        while nums and nums[-1] == 0:
+            nums.pop()
+            
+        ans = 0
+        for i in range( len(nums)-2 ):
+            target = nums[i]
+            
+            p, q = i+1, len(nums) - 1
+            
+            while p < q:
+                if nums[p] + nums[q] > target:
+                    ans += q - p
+                    p += 1
+                else:
+                    q -= 1
+        
+        return ans
 
 # Time: O(n^2logn); Space: O(1)
 class Solution(object):
