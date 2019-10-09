@@ -47,6 +47,36 @@ https://leetcode.com/problems/nested-list-weight-sum/
 #        :rtype List[NestedInteger]
 #        """
 
+# Solution 1: Recursively
+from collections import defaultdict
+class Solution(object):
+    def dfs(self, num, level):
+        if not num:
+            return
+        if num.isInteger():
+            self.table[ level ] += num.getInteger()
+        else:
+            temp = num.getList()
+            for newnum in temp:
+                self.dfs( newnum, level + 1 )
+        
+    def depthSum(self, nestedList):
+        """
+        :type nestedList: List[NestedInteger]
+        :rtype: int
+        """
+        self.table = defaultdict( int )
+
+        for val in nestedList:
+            self.dfs( val, 1 )
+        
+        ans = 0
+        for key in self.table:
+            ans += key*self.table[ key ]
+        
+        return ans
+
+# Solution 2: Interactively
 class Solution(object):
     def depthSum(self, nestedList):
         """
