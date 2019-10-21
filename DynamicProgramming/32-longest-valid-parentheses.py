@@ -72,3 +72,26 @@ class Solution(object):
                 stack.append( [s[i], i] )
 
         return ans
+
+# Solution 3: DP
+# Time & Space: O(n)
+
+class Solution(object):
+    def longestValidParentheses(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        ans = 0
+        dp = [0]*(len(s)+1)
+        
+        for i in range( len(s) ):
+            if s[i] == ")":
+                if i >= 1 and s[i-1] == '(':
+                    dp[i+1] = dp[i-1] + 2
+                elif i >= dp[i] + 1 and s[ i-dp[i]-1 ] == '(':
+                    dp[i+1] = dp[i] + dp[i-dp[i]-1] + 2
+                ans = max( ans, dp[i+1] )
+                # print dp
+        
+        return ansa
