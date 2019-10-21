@@ -51,28 +51,26 @@ class Solution1(object):
         return ans
 
 
-# Solution 2: Recursively
-
-from collections import OrderedDict
+# Solution 2: Recursively 
+# Space: O(1)
 
 class Solution2(object):
     def dfs(self, root, stack, level):
         if not root:
             return
         
-        if level not in stack:
-            stack[ level ] = root.val
+        if len(self.ans) < level :
+            self.ans.append( root.val )
         
-        self.dfs( root.right, stack, level + 1)
-        self.dfs( root.left, stack, level + 1)
+        self.dfs( root.right, level + 1)
+        self.dfs( root.left, level + 1)
         
     def rightSideView(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        stack = OrderedDict()
+        self.ans = []        
+        self.dfs( root, 1 )
         
-        self.dfs( root, stack, 0 )
-        
-        return stack.values()
+        return self.ans
