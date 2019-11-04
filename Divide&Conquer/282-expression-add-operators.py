@@ -43,8 +43,8 @@ class Solution(object):
         
         for i in range(len(nums)):
             num = nums[:i+1]
-            if num[0] == '0' and len(num) > 1:
-                continue
+            if num[0] == '0' and i >= 1:
+                break
             if not path:
                 self.dfs(nums[i+1:], path + [num], [int(num)], target)
             else:
