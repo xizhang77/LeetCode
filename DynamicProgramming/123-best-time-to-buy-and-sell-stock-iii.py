@@ -27,6 +27,45 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 '''
 
+# Solution 3 [DP]
+# Time: O(n); Spce: O(n)
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+        
+        n = len( prices )
+        
+        left = [0]*n 
+        buy = prices[0]
+        res = 0
+        for i in range( 1, n ):
+            if prices[i] <= buy:
+                buy = prices[i]
+            else:
+                res = max( res, prices[i] - buy )
+            left[i] = res
+        
+        right = [0]*n
+        sell = prices[-1]
+        res = 0
+        for i in range( n - 2, -1, -1 ):
+            if prices[i] >= sell:
+                sell = prices[i]
+            else:
+                res = max( res, sell - prices[i])
+            right[i] = res
+        
+        ans = 0
+        for i in range( n ):
+            ans = max( ans, left[i] + right[i] )        
+        
+        return ans
+    
 # Soluiton 1 [Divide and Conquer, LTE, 199 / 200 test cases passed.]
 # Time: O(n^2); Space: O(n)
 class Solution(object):
