@@ -16,6 +16,26 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 to get new method signature.
 '''
 
+# Solution 1: priority queue
+import heapq
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
+        intervals.sort( key=lambda x: x[0])
+        stack = []
+        
+        for interval in intervals:
+            start, end = interval
+            if stack and stack[0] <= start:
+                heapq.heappop( stack )
+            heapq.heappush( stack, end )
+        
+        return len( stack )
+        
+
 class Solution(object):
     def minMeetingRooms(self, intervals):
         """
